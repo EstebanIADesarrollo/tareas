@@ -1,1 +1,50 @@
-<p>crear-tareas works!</p>
+<form class="mx-5">
+  <div class="card m-5">
+    <div class="card-body">
+        <h5 class="card-title">Crear tarea</h5>
+      <div class="mb-2">
+        <label for=""> Nombre completo</label>
+        <input
+          class="form-control"
+          type="text"
+          [formControl]="nombre"
+          placeholder="nombre..."
+        />
+        <div class="alert alert-danger mt-2" [hidden]="nombre.valid || nombre.pristine">El nombre es obligatorio</div>
+      </div>
+      <div class="mb-2">
+        <label for=""> Edad </label>
+        <input
+          class="form-control"
+          type="number"
+          [formControl]="edad"
+          placeholder="edad..."
+        />
+        <div class="alert alert-danger mt-2" [hidden]="edad.pristine || edad.valid">
+            <span *ngIf="edad.hasError('min') || !edad.value">
+                La edad debe ser mayor a 18
+            </span>
+            <br>
+            <span *ngIf="edad.hasError('required')">
+                El campo edad es obligatorio
+            </span>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for=""> Habilidades </label>
+        <input
+          class="form-control"
+          type="array"
+          [formControl]="habilidades"
+          placeholder="habilidades..."
+        />
+        <div class="alert alert-danger mt-2" [hidden]=" habilidades.valid || habilidades.pristine">Debe al menos tener una habilidad</div>
+      </div>
+
+      <button class="btn btn-primary">Crear</button>
+    </div>
+  </div>
+</form>
+
+
+
